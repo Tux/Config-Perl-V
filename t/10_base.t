@@ -3,10 +3,17 @@
 use strict;
 use warnings;
 
-use Test::More tests => 8;
-use Test::NoWarnings;
-
 BEGIN {
+    use Test::More;
+    my $tests = 7;
+    unless ($ENV{PERL_CORE}) {
+	require Test::NoWarnings;
+	Test::NoWarnings->import ();
+	$tests++;
+	}
+
+    plan tests => $tests;
+
     use_ok ("Config::Perl::V");
     }
 
