@@ -1,3 +1,6 @@
+0.16	- 20 Jun 2012, H.Merijn Brand
+    * Do not shell out on 5.14.0 and up if perl provides internals (Nicholas)
+
 0.15	- 07 Jun 2012, H.Merijn Brand
     * Update copyright to 2012
     * Prepare for CORE inclusion (BinGOs)

@@ -8,7 +8,7 @@ use warnings;
 use Config;
 use Exporter;
 use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
-$VERSION     = "0.15";
+$VERSION     = "0.16";
 @ISA         = ("Exporter");
 @EXPORT_OK   = qw( plv2hash summary myconfig signature );
 %EXPORT_TAGS = (
@@ -273,18 +273,31 @@ sub myconfig
     my %args = ref $args eq "HASH"  ? %$args :
                ref $args eq "ARRAY" ? @$args : ();
 
-    #y $pv = qx[$^X -e"sub Config::myconfig{};" -V];
-    my $pv = qx[$^X -V];
-       $pv =~ s{.*?\n\n}{}s;
-       $pv =~ s{\n(?:  \s+|\t\s*)}{ }g;
-
-    #print $pv;
-
     my $build = { %empty_build };
-    $pv =~ m{^\s+Built under (.*)}m                and $build->{osname} = $1;
-    $pv =~ m{^\s+Compiled at (.*)}m                and $build->{stamp}  = $1;
-    $pv =~ m{^\s+Locally applied patches:\s+(.*)}m and $build->{patches} = [ split m/\s+/, $1 ];
-    $pv =~ m{^\s+Compile-time options:\s+(.*)}m    and map { $build->{options}{$_} = 1 } split m/\s+/, $1;
+
+    # 5.14.0 and later provide all the information without shelling out
+    my $stamp = eval { Config::compile_date () };
+    if (defined $stamp) {
+	$stamp =~ s/^Compiled at //;
+	$build->{osname}      = $^O;
+	$build->{stamp}       = $stamp;
+	$build->{patches}     =     [ Config::local_patches () ];
+	$build->{options}{$_} = 1 for Config::bincompat_options (),
+				      Config::non_bincompat_options ();
+	}
+    else {
+	#y $pv = qx[$^X -e"sub Config::myconfig{};" -V];
+	my $pv = qx[$^X -V];
+	   $pv =~ s{.*?\n\n}{}s;
+	   $pv =~ s{\n(?:  \s+|\t\s*)}{ }g;
+
+	#print $pv;
+
+	$pv =~ m{^\s+Built under (.*)}m                and $build->{osname} = $1;
+	$pv =~ m{^\s+Compiled at (.*)}m                and $build->{stamp}  = $1;
+	$pv =~ m{^\s+Locally applied patches:\s+(.*)}m and $build->{patches} = [ split m/\s+/, $1 ];
+	$pv =~ m{^\s+Compile-time options:\s+(.*)}m    and map { $build->{options}{$_} = 1 } split m/\s+/, $1;
+	}
 
     my @KEYS = keys %ENV;
     my %env  =
