@@ -1,3 +1,6 @@
+0.17	- 10 Feb 2013, H.Merijn Brand
+    * Deal with spaces in patch descriptions
+
 0.16	- 25 Jan 2013, H.Merijn Brand
     * Do not shell out on 5.14.0 and up if perl provides internals (Nicholas)
     * Update copyright to 2013
