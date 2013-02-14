@@ -17,8 +17,8 @@ my %wm = (
 		       "Test::More"		=> 0,
 		       "Test::NoWarnings"	=> 0,
 		       },
-    macro        => { TARFLAGS => "--format=ustar -c -v -f",
-		      }
+    macro         => { TARFLAGS => "--format=ustar -c -v -f",
+		       },
     );
 $ExtUtils::MakeMaker::VERSION > 6.30 and $wm{LICENSE} = "perl";
 
