@@ -56,7 +56,6 @@ configure_requires:
 build_requires:
     perl:                5.006
 test_requires:
-    Test::Harness:       0
     Test::More:          0
     Test::NoWarnings:    0
 resources:
