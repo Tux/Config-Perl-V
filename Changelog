@@ -1,5 +1,5 @@
-0.18	- 10 Feb 2013, H.Merijn Brand
-    . 
+0.18	- 17 Feb 2013, H.Merijn Brand
+    * Fixed typo in META (Chorny)
 
 0.17	- 10 Feb 2013, H.Merijn Brand
     * Deal with spaces in patch descriptions

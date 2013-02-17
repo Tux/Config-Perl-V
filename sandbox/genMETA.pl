@@ -36,7 +36,7 @@ __END__
 --- #YAML:1.0
 name:                    Config-Perl-V
 version:                 VERSION
-abstract:                Structured data retreival of perl -V output
+abstract:                Structured data retrieval of perl -V output
 license:                 perl
 author:              
     - H.Merijn Brand <h.m.brand@xs4all.nl>
