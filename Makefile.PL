@@ -5,6 +5,7 @@
 use strict;
 
 use ExtUtils::MakeMaker;
+my $eummv = $ExtUtils::MakeMaker::VERSION;
 
 my %wm = (
     NAME	  =>   "Config::Perl::V",
@@ -13,14 +14,12 @@ my %wm = (
     VERSION_FROM  =>   "V.pm",
     ABSTRACT_FROM =>   "V.pm",
 
-    PREREQ_PM	  => { "Config"			=> 0,
-		       "Test::More"		=> 0,
-		       "Test::NoWarnings"	=> 0,
-		       },
-    macro         => { TARFLAGS => "--format=ustar -c -v -f",
-		       },
+    PREREQ_PM	  => { "Config"	=> 0,				},
+    macro         => { TARFLAGS => "--format=ustar -c -v -f",	},
     );
-$ExtUtils::MakeMaker::VERSION > 6.30 and $wm{LICENSE} = "perl";
+$eummv > 6.30 and $wm{LICENSE} = "perl";
+my $section = $eummv > 6.63 ? "TEST_REQUIRES" : "PREREQ_PM";
+$wm{$section}{$_} = 0 for qw( Test::More Test::NoWarnings );
 
 my $rv = WriteMakefile (%wm);
 
