@@ -1,6 +1,7 @@
-0.18	- 17 Feb 2013, H.Merijn Brand
+0.18	- 24 May 2013, H.Merijn Brand
     * Fixed typo in META (Chorny)
     * Support for using uninstalled Test::NoWarnings (RT#82386)
+    * Sync up with perl-5.18.0 (and 5.19.0)
 
 0.17	- 10 Feb 2013, H.Merijn Brand
     * Deal with spaces in patch descriptions
