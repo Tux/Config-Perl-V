@@ -17,8 +17,8 @@ my %wm = (
     PREREQ_PM	  => { "Config"	=> 0,				},
     macro         => { TARFLAGS => "--format=ustar -c -v -f",	},
     );
-$eummv > 6.30 and $wm{LICENSE} = "perl";
-my $section = $eummv > 6.63 ? "TEST_REQUIRES" : "PREREQ_PM";
+$eummv >= 6.31 and $wm{LICENSE} = "perl";
+my $section = $eummv >= 6.64 ? "TEST_REQUIRES" : "PREREQ_PM";
 $wm{$section}{$_} = 0 for qw( Test::More Test::NoWarnings );
 
 my $rv = WriteMakefile (%wm);
