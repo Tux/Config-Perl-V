@@ -1,5 +1,6 @@
-0.19	- 05 Jun 2013, H.Merijn Brand
-    - TEST_REQUIRES was added in 6.63_03 (RT#85811)
+0.19	- 30 Jul 2013, H.Merijn Brand
+    * TEST_REQUIRES was added in 6.63_03 (RT#85811)
+    * Removed duplicate entry (no visible change)
 
 0.18	- 24 May 2013, H.Merijn Brand
     * Fixed typo in META (Chorny)
