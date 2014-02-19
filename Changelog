@@ -1,6 +1,6 @@
-0.20	- 25 Jan 2014, H.Merijn Brand
+0.20	- 19 Feb 2014, H.Merijn Brand
     * Update copyright to 2014
-    - Typo fix in comment (RT#92469)
+    * Typo fix in comment (RT#92469)
 
 0.19	- 30 Jul 2013, H.Merijn Brand
     * TEST_REQUIRES was added in 6.63_03 (RT#85811)
