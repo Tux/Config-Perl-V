@@ -24,6 +24,7 @@ if ($check) {
     $meta->check_encoding ();
     $meta->check_required ();
     $meta->check_minimum ();
+    $meta->done_testing ();
     }
 elsif ($opt_v) {
     $meta->print_yaml ();
