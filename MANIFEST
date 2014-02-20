@@ -6,6 +6,12 @@ V.pm
 t/00_pod.t
 t/01_pod.t
 t/10_base.t
-t/20_plv510.t
-t/21_plv518.t
+t/20_plv56.t
+t/21_plv58.t
+t/22_plv510.t
+t/23_plv512.t
+t/24_plv514.t
+t/25_plv516.t
+t/26_plv518.t
+t/26_plv5182.t
 examples/show-v.pl
