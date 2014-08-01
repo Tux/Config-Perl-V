@@ -21,7 +21,7 @@ ok (my $conf = Config::Perl::V::plv2hash (<DATA>), "Read perl -v block");
 ok (exists $conf->{$_}, "Has $_ entry") for qw( build environment config inc );
 
 is ($conf->{build}{osname}, $conf->{config}{osname}, "osname");
-is ($conf->{build}{stamp}, "Jun 30 2014 15:37:09", "No build time known");
+is ($conf->{build}{stamp}, "Jun 30 2014 15:37:09", "Build time");
 is ($conf->{config}{version}, "5.20.0", "reconstructed \$Config{version}");
 
 is ($conf->{build}{options}{$_}, 0, "Runtime option $_ unset") for qw(
