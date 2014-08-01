@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN {
     use Test::More;
-    my $tests = 8;
+    my $tests = 9;
     unless ($ENV{PERL_CORE}) {
 	require Test::NoWarnings;
 	Test::NoWarnings->import ();
@@ -21,7 +21,8 @@ ok (my $conf = Config::Perl::V::plv2hash (<DATA>), "Read perl -v block");
 ok (exists $conf->{$_}, "Has $_ entry") for qw( build environment config inc );
 
 is ($conf->{build}{osname}, $conf->{config}{osname}, "osname");
-is ($conf->{build}{stamp}, 0, "No build time known");
+is ($conf->{build}{stamp}, "Mar 23 2010 17:34:56", "Build time");
+is ($conf->{config}{"package"}, "perl5", "reconstructed \%Config{package}");
 is ($conf->{config}{version}, "5.6.2", "reconstructed \%Config{version}");
 
 __END__

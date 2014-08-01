@@ -21,7 +21,7 @@ ok (my $conf = Config::Perl::V::plv2hash (<DATA>), "Read perl -v block");
 ok (exists $conf->{$_}, "Has $_ entry") for qw( build environment config inc );
 
 is ($conf->{build}{osname}, $conf->{config}{osname}, "osname");
-is ($conf->{build}{stamp}, 0, "No build time known");
+is ($conf->{build}{stamp}, "Dec 20 2010 12:46:00", "Build time");
 is ($conf->{config}{version}, "5.12.2", "reconstructed \%Config{version}");
 is ($conf->{config}{gccversion}, "", "not built with gcc");
 is ($conf->{config}{ccversion}, "B3910B", "built with HP C-ANSI-C");

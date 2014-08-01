@@ -229,27 +229,26 @@ sub _make_derived
 sub plv2hash
 {
     my %config;
-    for (split m/\n+/ => join "\n", @_) {
 
-	if (s/^Summary of my\s+(\S+)\s+\(\s*(.*?)\s*\)//) {
-	    $config{"package"} = $1;
-	    my $rev = $2;
-	    $rev =~ s/^ revision \s+ (\S+) \s*//x and $config{revision} = $1;
-	    $rev and $config{version_patchlevel_string} = $rev;
-	    my ($rel) = $config{package} =~ m{perl(\d)};
-	    my ($vers, $subvers) = $rev =~ m{version\s+(\d+)\s+subversion\s+(\d+)};
-	    defined $vers && defined $subvers && defined $rel and
-		$config{version} = "$rel.$vers.$subvers";
-	    next;
-	    }
+    my $pv = join "\n" => @_;
 
-	if (s/^\s+(Snapshot of:)\s+(\S+)//) {
-	    $config{git_commit_id_title} = $1;
-	    $config{git_commit_id}       = $2;
-	    next;
-	    }
+    if ($pv =~ m/^Summary of my\s+(\S+)\s+\(\s*(.*?)\s*\)/m) {
+	$config{"package"} = $1;
+	my $rev = $2;
+	$rev =~ s/^ revision \s+ (\S+) \s*//x and $config{revision} = $1;
+	$rev and $config{version_patchlevel_string} = $rev;
+	my ($rel) = $config{"package"} =~ m{perl(\d)};
+	my ($vers, $subvers) = $rev =~ m{version\s+(\d+)\s+subversion\s+(\d+)};
+	defined $vers && defined $subvers && defined $rel and
+	    $config{version} = "$rel.$vers.$subvers";
+	}
 
-	my %kv = m/\G,?\s*([^=]+)=('[^']+?'|\S+)/gc;
+    if ($pv =~ m/^\s+(Snapshot of:)\s+(\S+)/) {
+	$config{git_commit_id_title} = $1;
+	$config{git_commit_id}       = $2;
+	}
+
+    if (my %kv = ($pv =~ m/\b(\w+)\s*=\s*('[^']+?'|\S+)/g)) {
 
 	while (my ($k, $v) = each %kv) {
 	    $k =~ s/\s+$//;
@@ -260,8 +259,21 @@ sub plv2hash
 	    $config{$k} = $v;
 	    }
 	}
+
     my $build = { %empty_build };
+
+    $pv =~ m{^\s+Compiled at\s+(.*)}m
+	and $build->{stamp}   = $1;
+    $pv =~ m{^\s+Locally applied patches:(?:\s+|\n)(.*)}m
+	and $build->{patches} = [ split m/\n+/, $1 ];
+    $pv =~ m{^\s+Compile-time options:(?:\s+|\n)(.*)}m
+	and map { $build->{options}{$_} = 1 } split m/\s+|\n/ => $1;
+
     $build->{osname} = $config{osname};
+    $pv =~ m{^\s+Built under\s+(.*)}m
+	and $build->{osname}  = $1;
+    $config{osname} ||= $build->{osname};
+
     return _make_derived ({
 	build		=> $build,
 	environment	=> {},
@@ -322,20 +334,9 @@ sub myconfig
 	}
     else {
 	#y $pv = qx[$^X -e"sub Config::myconfig{};" -V];
-	my $pv = qx[$^X -V];
-	   $pv =~ s{.*?\n\n}{}s;
-	   $pv =~ s{\n(?:  \s+|\t\s*)}{\0}g;
+	my $cnf = plv2hash (qx[$^X -V]);
 
-	# print STDERR $pv;
-
-	$pv =~ m{^\s+Built under\s+(.*)}m
-	    and $build->{osname}  = $1;
-	$pv =~ m{^\s+Compiled at\s+(.*)}m
-	    and $build->{stamp}   = $1;
-	$pv =~ m{^\s+Locally applied patches:(?:\s+|\0)(.*)}m
-	    and $build->{patches} = [ split m/\0+/, $1 ];
-	$pv =~ m{^\s+Compile-time options:(?:\s+|\0)(.*)}m
-	    and map { $build->{options}{$_} = 1 } split m/\s+|\0/ => $1;
+	$build->{$_} = $cnf->{build}{$_} for qw( osname stamp patches options );
 	}
 
     my @KEYS = keys %ENV;
