@@ -12,6 +12,7 @@ t/22_plv510.t
 t/23_plv512.t
 t/24_plv514.t
 t/25_plv516.t
+t/25_plv5162.t
 t/26_plv518.t
 t/26_plv5182.t
 t/27_plv5200.t

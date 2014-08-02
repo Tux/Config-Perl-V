@@ -1,5 +1,9 @@
-0.22	- 01 Aug 2014, H.Merijn Brand
-    - 
+0.22	- 02 Aug 2014, H.Merijn Brand
+    * Fixed parsing locally applied patches (passed only first line)
+    * Fixed parsing compile-time options (passed only first line)
+    * Some settings run unquoted to end-of-line
+    * Not all key-value pairs were separated by ',' in older perl
+    * Small typo in test comment
 
 0.21	- 01 Aug 2014, H.Merijn Brand
     * Add tests for each major distribution since 5.6.2
