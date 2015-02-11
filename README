@@ -23,7 +23,7 @@ BUILDING AND INSTALLATION
 SOURCE CODE
 
     Recent changes can be (re)viewed in the public GIT repository at
-    http://repo.or.cz/w/Config-Perl-V.git
+    http://repo.or.cz/w/Config-Perl-V
     Feel free to clone your own copy:
 
      $ git clone https://github.com/Tux/Config-Perl-V Config-Perl-V
