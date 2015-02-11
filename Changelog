@@ -1,3 +1,6 @@
+0.23	- 31 Dec 2014, H.Merijn Brand
+    - Update copyright to 2015
+
 0.22	- 02 Aug 2014, H.Merijn Brand
     * Fixed parsing locally applied patches (passed only first line)
     * Fixed parsing compile-time options (passed only first line)
