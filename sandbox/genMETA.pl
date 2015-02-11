@@ -50,8 +50,6 @@ provides:
 requires:     
     perl:                5.006
     Config:              0
-recommends:
-    perl:                5.020000
 configure_requires:
     ExtUtils::MakeMaker: 0
 build_requires:

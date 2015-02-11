@@ -1,6 +1,7 @@
-0.23	- 31 Dec 2014, H.Merijn Brand
-    - Update copyright to 2015
-    - Add summary tests
+0.23	- 11 Feb 2015, H.Merijn Brand
+    * Update copyright to 2015
+    * Add summary tests
+    * Remove perl recommendation from META as it breaks cpan clients
 
 0.22	- 02 Aug 2014, H.Merijn Brand
     * Fixed parsing locally applied patches (passed only first line)
