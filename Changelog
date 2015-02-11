@@ -2,6 +2,7 @@
     * Update copyright to 2015
     * Add summary tests
     * Remove perl recommendation from META as it breaks cpan clients
+    * Move repo to github
 
 0.22	- 02 Aug 2014, H.Merijn Brand
     * Fixed parsing locally applied patches (passed only first line)
