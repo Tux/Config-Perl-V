@@ -14,3 +14,4 @@ sandbox/
 \.tar.gz$
 \.aspell\.local\.pws
 \.travis.yml
+xt/
