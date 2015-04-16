@@ -106,6 +106,7 @@ my %BTD = map { $_ => 0 } qw(
     USE_LOCALE_TIME
     USE_LONG_DOUBLE
     USE_PERLIO
+    USE_QUADMATH
     USE_REENTRANT_API
     USE_SFIO
     USE_SOCKS

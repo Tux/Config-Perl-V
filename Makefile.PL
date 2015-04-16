@@ -21,6 +21,8 @@ $eummv >= 6.31 and $wm{LICENSE} = "perl";
 my $section = $eummv >= 6.64 ? "TEST_REQUIRES" : "PREREQ_PM";
 $wm{$section}{$_} = 0 for qw( Test::More Test::NoWarnings );
 
+-d "xt" and $wm{test}{TESTS} = "t/*.t xt/*.t";
+
 my $rv = WriteMakefile (%wm);
 
 1;

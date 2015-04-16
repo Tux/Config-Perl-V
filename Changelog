@@ -1,5 +1,7 @@
-0.24	- 04 Mar 2015, H.Merijn Brand
-    - Typo in README
+0.24	- 16 Apr 2015, H.Merijn Brand
+    * Typo in README
+    * Add USE_QUADMATH
+    * Auto-check against core
 
 0.23	- 11 Feb 2015, H.Merijn Brand
     * Update copyright to 2015
