@@ -1,3 +1,6 @@
+0.25	- 16 Apr 2015, H.Merijn Brand
+    - Travis will work on a git checkout *with* xt
+
 0.24	- 16 Apr 2015, H.Merijn Brand
     * Typo in README
     * Add USE_QUADMATH

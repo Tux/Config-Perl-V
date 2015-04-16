@@ -1,13 +1,13 @@
 #!/pro/bin/perl
 
-use 5.20.0;
+use strict;
 use warnings;
 use Test::More;
 use Cwd;
 
 my $here = getcwd;
 
-chdir "/pro/3gl/CPAN/perl-git";
+chdir "/pro/3gl/CPAN/perl-git" or plan skip_all => "This is not the developer environment";
 qx{git pull --all};
 
 my @pc;
