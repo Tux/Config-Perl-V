@@ -14,4 +14,6 @@ t/25_plv5162.t
 t/26_plv518.t
 t/26_plv5182.t
 t/27_plv5200.t
+t/27_plv5202.t
+t/28_plv5220.t
 examples/show-v.pl
