@@ -2,6 +2,7 @@ MANIFEST
 Changelog
 Makefile.PL
 README
+CONTRIBUTING.md
 V.pm
 t/10_base.t
 t/20_plv56.t

@@ -1,7 +1,8 @@
-0.25	- 31 Jul 2015, H.Merijn Brand
+0.25	- 18 Aug 2015, H.Merijn Brand
     * Travis will work on a git checkout *with* xt
     * Add PERL_COPY_ON_WRITE (renamed from PERL_NEW_COPY_ON_WRITE)
     * Add tests for 5.20.2 and 5.22.0
+    * Add CONTRIBUTING.md
 
 0.24	- 16 Apr 2015, H.Merijn Brand
     * Typo in README
