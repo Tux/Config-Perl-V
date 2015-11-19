@@ -8,7 +8,7 @@ use warnings;
 use Config;
 use Exporter;
 use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
-$VERSION     = "0.25";
+$VERSION     = "0.26";
 @ISA         = ("Exporter");
 @EXPORT_OK   = qw( plv2hash summary myconfig signature );
 %EXPORT_TAGS = (
@@ -251,6 +251,15 @@ sub plv2hash
     if ($pv =~ m/^\s+(Snapshot of:)\s+(\S+)/) {
 	$config{git_commit_id_title} = $1;
 	$config{git_commit_id}       = $2;
+	}
+
+    # these are always last on line and can have multiple quotation styles
+    for my $k (qw( ccflags ldflags lddlflags )) {
+	$pv =~ s{, \s* $k \s*=\s* (.*) \s*$}{}mx or next;
+	my $v = $1;
+	$v =~ s/\s*,\s*$//;
+	$v =~ s/^(['"])(.*)\1$/$2/;
+	$config{$k} = $v;
 	}
 
     if (my %kv = ($pv =~ m{\b
