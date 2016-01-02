@@ -1,6 +1,7 @@
-0.26	- 19 Nov 2015, H.Merijn Brand
+0.26	- 19 Nov 2016, H.Merijn Brand
     * Some flags are special and can have embedded quotation
     * Add windos 5.23.5/cl config
+    * It's 2016
 
 0.25	- 18 Nov 2015, H.Merijn Brand
     * Travis will work on a git checkout *with* xt
