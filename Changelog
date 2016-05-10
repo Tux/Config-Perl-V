@@ -1,7 +1,8 @@
-0.26	- 02 Jan 2016, H.Merijn Brand
+0.26	- 10 May 2016, H.Merijn Brand
     * Some flags are special and can have embedded quotation
     * Add windos 5.23.5/cl config
     * It's 2016
+    * Sync up with 5.24.0 - add SILENT_NO_TAINT_SUPPORT
 
 0.25	- 18 Nov 2015, H.Merijn Brand
     * Travis will work on a git checkout *with* xt
