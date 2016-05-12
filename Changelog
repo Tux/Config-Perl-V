@@ -1,3 +1,6 @@
+0.27	- 10 May 2016, H.Merijn Brand
+    * 
+
 0.26	- 10 May 2016, H.Merijn Brand
     * Some flags are special and can have embedded quotation
     * Add windos 5.23.5/cl config
