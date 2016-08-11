@@ -1,5 +1,5 @@
-0.27	- 10 May 2016, H.Merijn Brand
-    * 
+0.27	- 11 Aug 2016, H.Merijn Brand
+    * Sync with 5.25.3 - add PERL_OP_PARENT
 
 0.26	- 10 May 2016, H.Merijn Brand
     * Some flags are special and can have embedded quotation
