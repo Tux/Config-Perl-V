@@ -161,7 +161,7 @@ my @config_vars = qw(
     useithreads usemultiplicity
     useperlio d_sfio uselargefiles usesocks
     use64bitint use64bitall uselongdouble
-    usemymalloc bincompat5005
+    usemymalloc default_inc_excludes_dot bincompat5005
 
     cc ccflags
     optimize
@@ -228,6 +228,8 @@ sub _make_derived {
 	$conf->{config}{git_branch}   ||= $1;
 	$conf->{config}{git_describe} ||= $conf->{config}{perl_patchlevel};
 	}
+
+    $conf->{config}{$_} ||= "undef" for grep m/^(?:use|def)/ => @config_vars;
 
     $conf;
     } # _make_derived
@@ -318,6 +320,7 @@ sub summary {
 	    d_longdbl d_longlong use64bitall use64bitint useithreads
 	    uselongdouble usemultiplicity usemymalloc useperlio useshrplib 
 	    doublesize intsize ivsize nvsize longdblsize longlongsize lseeksize
+	    default_inc_excludes_dot
 	    );
     $info{$_}++ for grep { $conf->{build}{options}{$_} } keys %{$conf->{build}{options}};
 
