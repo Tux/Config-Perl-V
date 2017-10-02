@@ -21,4 +21,5 @@ t/28_plv52201w.t
 t/29_plv5235w.t
 t/30_plv5240.t
 t/31_plv52511.t
+t/32_plv5261rc1.t
 examples/show-v.pl
