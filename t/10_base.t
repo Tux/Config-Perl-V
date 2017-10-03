@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN {
     use Test::More;
-    my $tests = 16;
+    my $tests = 40;
     unless ($ENV{PERL_CORE}) {
 	require Test::NoWarnings;
 	Test::NoWarnings->import ();
@@ -29,7 +29,13 @@ is_deeply ($info1, $info2, "Info should match");
 ok (my $sig = Config::Perl::V::signature, "Get signature");
 like ($sig, qr{^[0-9a-f]{32}$}, "Valid md5");
 ok (my $bad = Config::Perl::V::signature ({ cfg => 0 }), "Signature on invalid data");
-is ($bad, "0" x 32, "Valid md5");
+is ($bad, "0" x 32, "Invalid md5");
+ok (   $bad = Config::Perl::V::signature ({ config => {} }), "Signature on incomplete data");
+is ($bad, "0" x 32, "Invalid md5");
+ok (   $bad = Config::Perl::V::signature ({ config => 0, build => {} }), "Signature on invalid data");
+is ($bad, "0" x 32, "Invalid md5");
+ok (   $bad = Config::Perl::V::signature ({ config => {}, build => 0 }), "Signature on invalid data");
+is ($bad, "0" x 32, "Invalid md5");
 
 SKIP: {
     # Test that the code that shells out to perl -V and parses the output
@@ -41,3 +47,17 @@ SKIP: {
     is_deeply (Config::Perl::V::myconfig, $conf,
 	"perl -V parsing code produces same result as the Config module");
     }
+
+$ENV{CPV_TEST_ENV} = 42;
+ok ($conf = Config::Perl::V::myconfig ({ env => qr{^CPV_TEST_ENV$} }), "Read config plus ENV");
+ok (exists $conf->{$_},	"Has $_ entry") for qw( build environment config inc environment );
+ok (my $eh = $conf->{environment}, "Get ENV from conf");
+is ($eh->{CPV_TEST_ENV}, 42, "Valid entry");
+
+ok ($conf = Config::Perl::V::myconfig ([ env => qr{^CPV_TEST_ENV$} ]), "Read config plus ENV");
+ok (exists $conf->{$_},	"Has $_ entry") for qw( build environment config inc environment );
+ok ($eh = $conf->{environment}, "Get ENV from conf");
+is ($eh->{CPV_TEST_ENV}, 42, "Valid entry");
+
+ok ($conf = Config::Perl::V::myconfig (  env => qr{^CPV_TEST_ENV$}  ), "Read config invalid arguments");
+is ($conf->{environment}{CPV_TEST_ENV}, undef, "No entry");

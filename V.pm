@@ -310,8 +310,11 @@ sub plv2hash {
 
 sub summary {
     my $conf = shift || myconfig ();
-    ref $conf eq "HASH" &&
-	exists $conf->{config} && exists $conf->{build} or return;
+    ref $conf eq "HASH"
+    && exists $conf->{config}
+    && exists $conf->{build}
+    && ref $conf->{config} eq "HASH"
+    && ref $conf->{build}  eq "HASH" or return;
 
     my %info = map {
 	exists $conf->{config}{$_} ? ( $_ => $conf->{config}{$_} ) : () }
