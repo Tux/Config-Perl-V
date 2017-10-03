@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN {
     use Test::More;
-    my $tests = 125;
+    my $tests = 127;
     unless ($ENV{PERL_CORE}) {
 	require Test::NoWarnings;
 	Test::NoWarnings->import ();
@@ -40,6 +40,9 @@ foreach my $o (sort qw(
 foreach my $o (sort keys %$opt) {
     is ($conf->{build}{options}{$o}, 0, "Runtime option $o unset");
     }
+
+ok (my $sig = Config::Perl::V::signature ($conf), "Get signature");
+is ($sig, "367b7e8ee708dbccede2674f56de635f", "MD5");
 
 is_deeply ($conf->{build}{patches}, [ "RC1" ], "No local patches");
 

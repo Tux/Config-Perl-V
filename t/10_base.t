@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN {
     use Test::More;
-    my $tests = 12;
+    my $tests = 16;
     unless ($ENV{PERL_CORE}) {
 	require Test::NoWarnings;
 	Test::NoWarnings->import ();
@@ -25,6 +25,11 @@ is (lc $conf->{build}{osname}, lc $conf->{config}{osname}, "osname");
 ok (my $info1 = Config::Perl::V::summary ($conf), "Get a summary for \$conf");
 ok (my $info2 = Config::Perl::V::summary,         "Get a summary for \$^X");
 is_deeply ($info1, $info2, "Info should match");
+
+ok (my $sig = Config::Perl::V::signature, "Get signature");
+like ($sig, qr{^[0-9a-f]{32}$}, "Valid md5");
+ok (my $bad = Config::Perl::V::signature ({ cfg => 0 }), "Signature on invalid data");
+is ($bad, "0" x 32, "Valid md5");
 
 SKIP: {
     # Test that the code that shells out to perl -V and parses the output

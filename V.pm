@@ -328,10 +328,12 @@ sub summary {
     } # summary
 
 sub signature {
-    eval { require Digest::MD5 };
-    $@ and return "00000000000000000000000000000000";
+    my $no_md5 = "0" x 32;
+    my $conf = summary (shift) or return $no_md5;
 
-    my $conf = shift || summary ();
+    eval { require Digest::MD5 };
+    $@ and return $no_md5;
+
     delete $conf->{config_args};
     return Digest::MD5::md5_hex (join "\xFF" => map {
 	"$_=".(defined $conf->{$_} ? $conf->{$_} : "\xFE");
