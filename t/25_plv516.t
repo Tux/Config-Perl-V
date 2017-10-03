@@ -40,8 +40,10 @@ foreach my $o (sort keys %$opt) {
     is ($conf->{build}{options}{$o}, 0, "Runtime option $o unset");
     }
 
+eval { require Digest::MD5; };
+my $md5 = $@ ? "0" x 32 : "7b00cf3b306d96fa802892e6ad4b070f";
 ok (my $sig = Config::Perl::V::signature ($conf), "Get signature");
-is ($sig, "7b00cf3b306d96fa802892e6ad4b070f", "MD5");
+is ($sig, $md5, "MD5");
 
 __END__
 Summary of my perl5 (revision 5 version 16 subversion 3) configuration:

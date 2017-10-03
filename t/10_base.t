@@ -5,7 +5,7 @@ use warnings;
 
 BEGIN {
     use Test::More;
-    my $tests = 40;
+    my $tests = 42;
     unless ($ENV{PERL_CORE}) {
 	require Test::NoWarnings;
 	Test::NoWarnings->import ();
@@ -28,14 +28,16 @@ is_deeply ($info1, $info2, "Info should match");
 
 ok (my $sig = Config::Perl::V::signature, "Get signature");
 like ($sig, qr{^[0-9a-f]{32}$}, "Valid md5");
+
+my $no_md5 = "0" x 32;
 ok (my $bad = Config::Perl::V::signature ({ cfg => 0 }), "Signature on invalid data");
-is ($bad, "0" x 32, "Invalid md5");
+is ($bad, $no_md5, "Invalid md5");
 ok (   $bad = Config::Perl::V::signature ({ config => {} }), "Signature on incomplete data");
-is ($bad, "0" x 32, "Invalid md5");
+is ($bad, $no_md5, "Invalid md5");
 ok (   $bad = Config::Perl::V::signature ({ config => 0, build => {} }), "Signature on invalid data");
-is ($bad, "0" x 32, "Invalid md5");
+is ($bad, $no_md5, "Invalid md5");
 ok (   $bad = Config::Perl::V::signature ({ config => {}, build => 0 }), "Signature on invalid data");
-is ($bad, "0" x 32, "Invalid md5");
+is ($bad, $no_md5, "Invalid md5");
 
 SKIP: {
     # Test that the code that shells out to perl -V and parses the output
@@ -61,3 +63,10 @@ is ($eh->{CPV_TEST_ENV}, 42, "Valid entry");
 
 ok ($conf = Config::Perl::V::myconfig (  env => qr{^CPV_TEST_ENV$}  ), "Read config invalid arguments");
 is ($conf->{environment}{CPV_TEST_ENV}, undef, "No entry");
+
+delete $INC{"Digest/MD5.pm"};
+delete $INC{"Digest/base.pm"};
+$INC{"Digest/MD5"} = "./flooble/blurgh/Digest/MD5.pm";
+local @INC = ("xyzzy$$"); # Should be unable to find Digest::MD5
+ok ($sig = Config::Perl::V::signature, "Get signature (No Digest::MD5)");
+is ($sig, $no_md5, "Valid md5");

@@ -40,8 +40,10 @@ foreach my $o (sort keys %$opt) {
     is ($conf->{build}{options}{$o}, 0, "Runtime option $o unset");
     }
 
+eval { require Digest::MD5; };
+my $md5 = $@ ? "0" x 32 : "874325856acfea3dab7e7c944660f398";
 ok (my $sig = Config::Perl::V::signature ($conf), "Get signature");
-is ($sig, "874325856acfea3dab7e7c944660f398", "MD5");
+is ($sig, $md5, "MD5");
 
 is_deeply ($conf->{build}{patches}, [], "No local patches");
 
