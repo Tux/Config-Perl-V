@@ -337,6 +337,9 @@ sub signature {
     eval { require Digest::MD5 };
     $@ and return $no_md5;
 
+    $conf->{cc} =~ s{.*\bccache\s+}{};
+    $conf->{cc} =~ s{.*[/\\]}{};
+
     delete $conf->{config_args};
     return Digest::MD5::md5_hex (join "\xFF" => map {
 	"$_=".(defined $conf->{$_} ? $conf->{$_} : "\xFE");

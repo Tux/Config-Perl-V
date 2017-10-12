@@ -1,7 +1,8 @@
-0.29	- 03 Oct 2017, H.Merijn Brand
+0.29	- 12 Oct 2017, H.Merijn Brand
     * It's 2017
     * Add test for 5.26.1-RC1
     * Fix signature with argument
+    * Ignore ccache and compiler path in signature
 
 0.28	- 27 Feb 2017, H.Merijn Brand
     * Add default_inc_excludes_dot

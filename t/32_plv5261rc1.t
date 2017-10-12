@@ -42,7 +42,7 @@ foreach my $o (sort keys %$opt) {
     }
 
 eval { require Digest::MD5; };
-my $md5 = $@ ? "0" x 32 : "367b7e8ee708dbccede2674f56de635f";
+my $md5 = $@ ? "0" x 32 : "dd710670fec7d2e260414648dcc94e89";
 ok (my $sig = Config::Perl::V::signature ($conf), "Get signature");
 is ($sig, $md5, "MD5");
 
