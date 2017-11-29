@@ -1,5 +1,3 @@
-#!/pro/bin/perl
-
 package Config::Perl::V;
 
 use strict;
