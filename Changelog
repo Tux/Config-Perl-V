@@ -1,5 +1,6 @@
-0.30	- 01 Jan 2018, H.Merijn Brand
+0.30	- 12 Apr 2018, H.Merijn Brand
     * It's 2018
+    * Add test for 5.27.11 (r is for rsync checkout)
 
 0.29	- 12 Oct 2017, H.Merijn Brand
     * It's 2017
