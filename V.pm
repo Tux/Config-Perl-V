@@ -404,9 +404,9 @@ Config::Perl::V - Structured data retrieval of perl -V output
 
 =head2 $conf = myconfig ()
 
-This function will collect the data described in L<the hash structure> below,
+This function will collect the data described in L</"The hash structure"> below,
 and return that as a hash reference. It optionally accepts an option to
-include more entries from %ENV. See L<environment> below.
+include more entries from %ENV. See L</environment> below.
 
 Note that this will not work on uninstalled perls when called with
 C<-I/path/to/uninstalled/perl/lib>, but it works when that path is in
