@@ -6,7 +6,7 @@ use warnings;
 use Config;
 use Exporter;
 use vars qw($VERSION @ISA @EXPORT_OK %EXPORT_TAGS);
-$VERSION     = "0.30";
+$VERSION     = "0.31";
 @ISA         = qw( Exporter );
 @EXPORT_OK   = qw( plv2hash summary myconfig signature );
 %EXPORT_TAGS = (
@@ -70,6 +70,7 @@ my %BTD = map { $_ => 0 } qw(
     USE_NO_REGISTRY
     USE_PERL_ATOF
     USE_SITECUSTOMIZE
+    USE_THREAD_SAFE_LOCALE
 
     DEBUG_LEAKING_SCALARS
     DEBUG_LEAKING_SCALARS_FORK_DUMP
