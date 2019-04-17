@@ -1,5 +1,6 @@
-0.32	- 01 Jan 2019, H.Merijn Brand
+0.32	- 17 Apr 2019, H.Merijn Brand
     * It's 2019
+    * Add test for 5.29.10 built with g++
 
 0.31	- 15 Dec 2018, H.Merijn Brand
     * Fix pod links (PR#2)
