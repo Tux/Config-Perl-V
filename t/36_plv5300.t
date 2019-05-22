@@ -21,7 +21,7 @@ ok (my $conf = Config::Perl::V::plv2hash (<DATA>), "Read perl -v block");
 ok (exists $conf->{$_}, "Has $_ entry") for qw( build environment config inc );
 
 is ($conf->{build}{osname}, $conf->{config}{osname}, "osname");
-is ($conf->{build}{stamp}, "May 12 2019 10:04:35", "Build time");
+is ($conf->{build}{stamp}, "May 22 2019 17:55:05", "Build time");
 is ($conf->{config}{version}, "5.30.0", "reconstructed \$Config{version}");
 
 my $opt = Config::Perl::V::plv2hash ("")->{build}{options};
@@ -29,10 +29,10 @@ foreach my $o (sort qw(
 	DEBUGGING HAS_TIMES MULTIPLICITY PERLIO_LAYERS PERL_COPY_ON_WRITE
 	PERL_DONT_CREATE_GVSV PERL_IMPLICIT_CONTEXT PERL_MALLOC_WRAP
 	PERL_OP_PARENT PERL_PRESERVE_IVUV USE_THREAD_SAFE_LOCALE
-	PERL_TRACK_MEMPOOL PERL_USE_DEVEL USE_64_BIT_ALL USE_64_BIT_INT
-	USE_ITHREADS USE_LARGE_FILES USE_LOCALE USE_LOCALE_COLLATE
-	USE_LOCALE_CTYPE USE_LOCALE_NUMERIC USE_LOCALE_TIME
-	USE_LONG_DOUBLE USE_PERLIO USE_PERL_ATOF USE_REENTRANT_API
+	PERL_TRACK_MEMPOOL USE_64_BIT_ALL USE_64_BIT_INT USE_ITHREADS
+	USE_LARGE_FILES USE_LOCALE USE_LOCALE_COLLATE USE_LOCALE_CTYPE
+	USE_LOCALE_NUMERIC USE_LOCALE_TIME USE_LONG_DOUBLE USE_PERLIO
+	USE_PERL_ATOF USE_REENTRANT_API
 	)) {
     is ($conf->{build}{options}{$o}, 1, "Runtime option $o set");
     delete $opt->{$o};
@@ -42,11 +42,11 @@ foreach my $o (sort keys %$opt) {
     }
 
 eval { require Digest::MD5; };
-my $md5 = $@ ? "0" x 32 : "aed1534a67bb464f84c6374fe717014f";
+my $md5 = $@ ? "0" x 32 : "b1138522685da4fff74f7b1118128d02";
 ok (my $sig = Config::Perl::V::signature ($conf), "Get signature");
 is ($sig, $md5, "MD5");
 
-is_deeply ($conf->{build}{patches}, [ "RC1" ], "This is the first RC");
+is_deeply ($conf->{build}{patches}, [ ], "No patches");
 
 my %check = (
     alignbytes      => 16,
@@ -55,8 +55,8 @@ my %check = (
     byteorder       => 12345678,
     cc              => "cc",
     cccdlflags      => "-fPIC",
-    ccdlflags       => "-Wl,-E",
-    config_args     => "-Dusedevel -Dusethreads -Duseithreads -Duse64bitall -Duselongdouble -desr -Dusedevel -Uinstallusrbinperl -Dprefix=/media/Tux/perls-t",
+    ccdlflags       => "-Wl,-E -Wl,-rpath,/pro/lib/perl5/5.30.0/x86_64-linux-thread-multi-ld/CORE",
+    config_args     => "-Dusethreads -Duseithreads -Duse64bitall -Duselongdouble -Duseshrplib -des",
     gccversion      => "8.3.1 20190226 [gcc-8-branch revision 269204]",
     gnulibc_version => "2.29",
     ivsize          => 8,
@@ -66,7 +66,7 @@ my %check = (
     ldflags         => "-L/pro/local/lib -fstack-protector-strong",
     libc            => "libc-2.29.so",
     lseektype       => "off_t",
-    osvers          => "5.0.11-1-default",
+    osvers          => "5.1.3-1-default",
     use64bitall     => "define",
     use64bitint     => "define",
     usemymalloc     => "n",
@@ -84,10 +84,10 @@ Summary of my perl5 (revision 5 version 30 subversion 0) configuration:
    
   Platform:
     osname=linux
-    osvers=5.0.11-1-default
+    osvers=5.1.3-1-default
     archname=x86_64-linux-thread-multi-ld
-    uname='linux lx09 5.0.11-1-default #1 smp thu may 2 10:46:32 utc 2019 (07c5318) x86_64 x86_64 x86_64 gnulinux '
-    config_args='-Dusedevel -Dusethreads -Duseithreads -Duse64bitall -Duselongdouble -desr -Dusedevel -Uinstallusrbinperl -Dprefix=/media/Tux/perls-t'
+    uname='linux lx09 5.1.3-1-default #1 smp fri may 17 04:54:29 utc 2019 (07d2e25) x86_64 x86_64 x86_64 gnulinux '
+    config_args='-Dusethreads -Duseithreads -Duse64bitall -Duselongdouble -Duseshrplib -des'
     hint=recommended
     useposix=true
     d_sigaction=define
@@ -101,9 +101,9 @@ Summary of my perl5 (revision 5 version 30 subversion 0) configuration:
     bincompat5005=undef
   Compiler:
     cc='cc'
-    ccflags ='-D_REENTRANT -D_GNU_SOURCE -DDEBUGGING -fwrapv -fno-strict-aliasing -pipe -fstack-protector-strong -I/pro/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_FORTIFY_SOURCE=2'
+    ccflags ='-D_REENTRANT -D_GNU_SOURCE -fPIC -DDEBUGGING -fwrapv -fno-strict-aliasing -pipe -fstack-protector-strong -I/pro/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_FORTIFY_SOURCE=2'
     optimize='-O2'
-    cppflags='-D_REENTRANT -D_GNU_SOURCE -DDEBUGGING -fwrapv -fno-strict-aliasing -pipe -fstack-protector-strong -I/pro/local/include'
+    cppflags='-D_REENTRANT -D_GNU_SOURCE -fPIC -DDEBUGGING -fwrapv -fno-strict-aliasing -pipe -fstack-protector-strong -I/pro/local/include'
     ccversion=''
     gccversion='8.3.1 20190226 [gcc-8-branch revision 269204]'
     gccosandvers=''
@@ -134,14 +134,14 @@ Summary of my perl5 (revision 5 version 30 subversion 0) configuration:
     perllibs=-lpthread -lnsl -ldl -lm -lcrypt -lutil -lc
     libc=libc-2.29.so
     so=so
-    useshrplib=false
-    libperl=libperl.a
+    useshrplib=true
+    libperl=libperl.so
     gnulibc_version='2.29'
   Dynamic Linking:
     dlsrc=dl_dlopen.xs
     dlext=so
     d_dlsymun=undef
-    ccdlflags='-Wl,-E'
+    ccdlflags='-Wl,-E -Wl,-rpath,/pro/lib/perl5/5.30.0/x86_64-linux-thread-multi-ld/CORE'
     cccdlflags='-fPIC'
     lddlflags='-shared -O2 -L/pro/local/lib -fstack-protector-strong'
 
@@ -159,7 +159,6 @@ Characteristics of this binary (from libperl):
     PERL_OP_PARENT
     PERL_PRESERVE_IVUV
     PERL_TRACK_MEMPOOL
-    PERL_USE_DEVEL
     USE_64_BIT_ALL
     USE_64_BIT_INT
     USE_ITHREADS
@@ -174,14 +173,12 @@ Characteristics of this binary (from libperl):
     USE_PERL_ATOF
     USE_REENTRANT_API
     USE_THREAD_SAFE_LOCALE
-  Locally applied patches:
-    RC1
   Built under linux
-  Compiled at May 12 2019 10:04:35
+  Compiled at May 22 2019 17:55:05
   %ENV:
     PERL6LIB="inst#/pro/3gl/CPAN/rakudo/install"
   @INC:
-    /media/Tux/perls-t/lib/site_perl/5.30.0/x86_64-linux-thread-multi-ld
-    /media/Tux/perls-t/lib/site_perl/5.30.0
-    /media/Tux/perls-t/lib/5.30.0/x86_64-linux-thread-multi-ld
-    /media/Tux/perls-t/lib/5.30.0
+    /pro/lib/perl5/site_perl/5.30.0/x86_64-linux-thread-multi-ld
+    /pro/lib/perl5/site_perl/5.30.0
+    /pro/lib/perl5/5.30.0/x86_64-linux-thread-multi-ld
+    /pro/lib/perl5/5.30.0
