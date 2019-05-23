@@ -21,18 +21,18 @@ ok (my $conf = Config::Perl::V::plv2hash (<DATA>), "Read perl -v block");
 ok (exists $conf->{$_}, "Has $_ entry") for qw( build environment config inc );
 
 is ($conf->{build}{osname}, $conf->{config}{osname}, "osname");
-is ($conf->{build}{stamp}, "May 22 2019 17:55:05", "Build time");
+is ($conf->{build}{stamp}, "May 23 2019 14:05:36", "Build time");
 is ($conf->{config}{version}, "5.30.0", "reconstructed \$Config{version}");
 
 my $opt = Config::Perl::V::plv2hash ("")->{build}{options};
 foreach my $o (sort qw(
-	DEBUGGING HAS_TIMES MULTIPLICITY PERLIO_LAYERS PERL_COPY_ON_WRITE
+	HAS_TIMES MULTIPLICITY PERLIO_LAYERS PERL_COPY_ON_WRITE
 	PERL_DONT_CREATE_GVSV PERL_IMPLICIT_CONTEXT PERL_MALLOC_WRAP
 	PERL_OP_PARENT PERL_PRESERVE_IVUV USE_THREAD_SAFE_LOCALE
-	PERL_TRACK_MEMPOOL USE_64_BIT_ALL USE_64_BIT_INT USE_ITHREADS
-	USE_LARGE_FILES USE_LOCALE USE_LOCALE_COLLATE USE_LOCALE_CTYPE
-	USE_LOCALE_NUMERIC USE_LOCALE_TIME USE_LONG_DOUBLE USE_PERLIO
-	USE_PERL_ATOF USE_REENTRANT_API
+	USE_64_BIT_ALL USE_64_BIT_INT USE_ITHREADS USE_LARGE_FILES
+	USE_LOCALE USE_LOCALE_COLLATE USE_LOCALE_CTYPE USE_LOCALE_NUMERIC
+	USE_LOCALE_TIME USE_LONG_DOUBLE USE_PERLIO USE_PERL_ATOF
+	USE_REENTRANT_API
 	)) {
     is ($conf->{build}{options}{$o}, 1, "Runtime option $o set");
     delete $opt->{$o};
@@ -101,9 +101,9 @@ Summary of my perl5 (revision 5 version 30 subversion 0) configuration:
     bincompat5005=undef
   Compiler:
     cc='cc'
-    ccflags ='-D_REENTRANT -D_GNU_SOURCE -fPIC -DDEBUGGING -fwrapv -fno-strict-aliasing -pipe -fstack-protector-strong -I/pro/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_FORTIFY_SOURCE=2'
+    ccflags ='-D_REENTRANT -D_GNU_SOURCE -fPIC -fwrapv -fno-strict-aliasing -pipe -fstack-protector-strong -I/pro/local/include -D_LARGEFILE_SOURCE -D_FILE_OFFSET_BITS=64 -D_FORTIFY_SOURCE=2'
     optimize='-O2'
-    cppflags='-D_REENTRANT -D_GNU_SOURCE -fPIC -DDEBUGGING -fwrapv -fno-strict-aliasing -pipe -fstack-protector-strong -I/pro/local/include'
+    cppflags='-D_REENTRANT -D_GNU_SOURCE -fPIC -fwrapv -fno-strict-aliasing -pipe -fstack-protector-strong -I/pro/local/include'
     ccversion=''
     gccversion='8.3.1 20190226 [gcc-8-branch revision 269204]'
     gccosandvers=''
@@ -148,7 +148,6 @@ Summary of my perl5 (revision 5 version 30 subversion 0) configuration:
 
 Characteristics of this binary (from libperl): 
   Compile-time options:
-    DEBUGGING
     HAS_TIMES
     MULTIPLICITY
     PERLIO_LAYERS
@@ -158,7 +157,6 @@ Characteristics of this binary (from libperl):
     PERL_MALLOC_WRAP
     PERL_OP_PARENT
     PERL_PRESERVE_IVUV
-    PERL_TRACK_MEMPOOL
     USE_64_BIT_ALL
     USE_64_BIT_INT
     USE_ITHREADS
@@ -174,7 +172,7 @@ Characteristics of this binary (from libperl):
     USE_REENTRANT_API
     USE_THREAD_SAFE_LOCALE
   Built under linux
-  Compiled at May 22 2019 17:55:05
+  Compiled at May 23 2019 14:05:36
   %ENV:
     PERL6LIB="inst#/pro/3gl/CPAN/rakudo/install"
   @INC:
