@@ -16,4 +16,5 @@ sandbox/
 \.tar.gz$
 \.aspell\.local\.pws
 \.travis.yml
+\.whitesource
 xt/
