@@ -1,7 +1,8 @@
-0.32	- 16 May 2019, H.Merijn Brand
+0.32	- 17 Jun 2019, H.Merijn Brand
     * It's 2019
     * Add test for 5.29.10 built with g++
     * Add test for 5.30.0-RC1
+    * Provide cpanfile
 
 0.31	- 15 Dec 2018, H.Merijn Brand
     * Fix pod links (PR#2)
