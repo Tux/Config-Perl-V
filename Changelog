@@ -4,6 +4,7 @@
     * Add test for 5.30.0-RC1
     * Provide cpanfile
     * Add test for 5.31.11 with Quadmath built with gcc-10
+    * It's 2020
 
 0.31	- 15 Dec 2018, H.Merijn Brand
     * Fix pod links (PR#2)
