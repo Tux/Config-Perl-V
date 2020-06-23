@@ -1,7 +1,7 @@
 \.git
 blib/
 cover_db/
-Makefile
+Makefile$
 MANIFEST.SKIP
 META.json
 META.yml
