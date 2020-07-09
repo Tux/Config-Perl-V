@@ -28,4 +28,5 @@ t/34_plv5280.t
 t/35_plv52910g.t
 t/36_plv5300.t
 t/37_plv53111qm.t
+t/38_plv5320tld.t
 examples/show-v.pl

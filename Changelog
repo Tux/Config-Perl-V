@@ -1,10 +1,11 @@
-0.32	- 09 Apr 2020, H.Merijn Brand
+0.32	- 09 Jul 2020, H.Merijn Brand
     * It's 2019
     * Add test for 5.29.10 built with g++
     * Add test for 5.30.0-RC1
     * Provide cpanfile
     * Add test for 5.31.11 with Quadmath built with gcc-10
     * It's 2020
+    * Add test for 5.32.0
 
 0.31	- 15 Dec 2018, H.Merijn Brand
     * Fix pod links (PR#2)
