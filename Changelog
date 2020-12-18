@@ -1,4 +1,7 @@
-0.32	- 09 Jul 2020, H.Merijn Brand
+0.33	- 18 Dec 2020, H.Merijn Brand
+    * Release for sync with core (no changes but the version number)
+
+0.32	- 17 Dec 2020, H.Merijn Brand
     * It's 2019
     * Add test for 5.29.10 built with g++
     * Add test for 5.30.0-RC1
