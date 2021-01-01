@@ -12,9 +12,11 @@ Policy.sh
 inc-test-count
 sandbox/
 .releaserc
-\.tgz$
-\.tar.gz$
 \.aspell\.local\.pws
+\.tar.gz$
+\.tgz$
+\.tmp$
 \.travis.yml
 \.whitesource
+doc/
 xt/
