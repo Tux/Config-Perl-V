@@ -46,7 +46,11 @@ foreach my $o (sort keys %$opt) {
 eval { require Digest::MD5; };
 my $md5 = $@ ? "0" x 32 : "ddcc2d51e43bf18f5234ba66529068ef";
 ok (my $sig = Config::Perl::V::signature ($conf), "Get signature");
-is ($sig, $md5, "MD5");
+
+SKIP: {
+    skip "ASCII-centric test", 1 if ord "A" != 65;
+    is ($sig, $md5, "MD5");
+}
 
 is_deeply ($conf->{build}{patches}, [], "No local patches");
 
