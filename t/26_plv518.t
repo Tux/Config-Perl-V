@@ -45,9 +45,9 @@ my $md5 = $@ ? "0" x 32 : "8f46b07a7775e6a92347d4cd564b8f03";
 ok (my $sig = Config::Perl::V::signature ($conf), "Get signature");
 
 SKIP: {
-    skip "ASCII-centric test", 1 if ord "A" != 65;
+    ord "A" == 65 or skip "ASCII-centric test", 1;
     is ($sig, $md5, "MD5");
-}
+    }
 
 is_deeply ($conf->{build}{patches}, [], "No local patches");
 

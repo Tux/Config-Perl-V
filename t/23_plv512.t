@@ -44,9 +44,9 @@ my $md5 = $@ ? "0" x 32 : "a2c38153cc47d340bc140d0bfe294afb";
 ok (my $sig = Config::Perl::V::signature ($conf), "Get signature");
 
 SKIP: {
-    skip "ASCII-centric test", 1 if ord "A" != 65;
+    ord "A" == 65 or skip "ASCII-centric test", 1;
     is ($sig, $md5, "MD5");
-}
+    }
 
 __END__
 Summary of my perl5 (revision 5 version 12 subversion 2) configuration:
