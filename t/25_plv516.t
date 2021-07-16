@@ -43,7 +43,11 @@ foreach my $o (sort keys %$opt) {
 eval { require Digest::MD5; };
 my $md5 = $@ ? "0" x 32 : "7b00cf3b306d96fa802892e6ad4b070f";
 ok (my $sig = Config::Perl::V::signature ($conf), "Get signature");
-is ($sig, $md5, "MD5");
+
+SKIP: {
+    skip "ASCII-centric test", 1 if ord "A" != 65;
+    is ($sig, $md5, "MD5");
+}
 
 __END__
 Summary of my perl5 (revision 5 version 16 subversion 3) configuration:
