@@ -36,10 +36,10 @@
 
 <h1 id="SYNOPSIS">SYNOPSIS</h1>
 
-<pre><code> use Config::Perl::V;
+<pre><code>use Config::Perl::V;
 
- my $local_config = Config::Perl::V::myconfig ();
- print $local_config-&gt;{config}{osname};</code></pre>
+my $local_config = Config::Perl::V::myconfig ();
+print $local_config-&gt;{config}{osname};</code></pre>
 
 <h1 id="DESCRIPTION">DESCRIPTION</h1>
 
@@ -74,32 +74,32 @@
 
 <p>This information is extracted from the second block that is emitted by <code>perl -V</code>, and usually looks something like</p>
 
-<pre><code> Characteristics of this binary (from libperl):
-   Compile-time options: DEBUGGING USE_64_BIT_INT USE_LARGE_FILES
-   Locally applied patches:
-         defined-or
-         MAINT24637
-   Built under linux
-   Compiled at Jun 13 2005 10:44:20
-   @INC:
-     /usr/lib/perl5/5.8.7/i686-linux-64int
-     /usr/lib/perl5/5.8.7
-     /usr/lib/perl5/site_perl/5.8.7/i686-linux-64int
-     /usr/lib/perl5/site_perl/5.8.7
-     /usr/lib/perl5/site_perl
-     .</code></pre>
+<pre><code>Characteristics of this binary (from libperl):
+  Compile-time options: DEBUGGING USE_64_BIT_INT USE_LARGE_FILES
+  Locally applied patches:
+        defined-or
+        MAINT24637
+  Built under linux
+  Compiled at Jun 13 2005 10:44:20
+  @INC:
+    /usr/lib/perl5/5.8.7/i686-linux-64int
+    /usr/lib/perl5/5.8.7
+    /usr/lib/perl5/site_perl/5.8.7/i686-linux-64int
+    /usr/lib/perl5/site_perl/5.8.7
+    /usr/lib/perl5/site_perl
+    .</code></pre>
 
 <p>or</p>
 
-<pre><code> Characteristics of this binary (from libperl):
-   Compile-time options: DEBUGGING MULTIPLICITY
-                         PERL_DONT_CREATE_GVSV PERL_IMPLICIT_CONTEXT
-                         PERL_MALLOC_WRAP PERL_TRACK_MEMPOOL
-                         PERL_USE_SAFE_PUTENV USE_ITHREADS
-                         USE_LARGE_FILES USE_PERLIO
-                         USE_REENTRANT_API
-   Built under linux
-   Compiled at Jan 28 2009 15:26:59</code></pre>
+<pre><code>Characteristics of this binary (from libperl):
+  Compile-time options: DEBUGGING MULTIPLICITY
+                        PERL_DONT_CREATE_GVSV PERL_IMPLICIT_CONTEXT
+                        PERL_MALLOC_WRAP PERL_TRACK_MEMPOOL
+                        PERL_USE_SAFE_PUTENV USE_ITHREADS
+                        USE_LARGE_FILES USE_PERLIO
+                        USE_REENTRANT_API
+  Built under linux
+  Compiled at Jan 28 2009 15:26:59</code></pre>
 
 <p>This information is not available anywhere else, including <code>%Config</code>, but it is the information that is only known to the perl binary.</p>
 
@@ -147,8 +147,8 @@
 
 <p>By default this hash is only filled with the environment variables out of %ENV that start with <code>PERL</code>, but you can pass the <code>env</code> option to myconfig to get more</p>
 
-<pre><code> my $conf = Config::Perl::V::myconfig ({ env =&gt; qr/^ORACLE/ });
- my $conf = Config::Perl::V::myconfig ([ env =&gt; qr/^ORACLE/ ]);</code></pre>
+<pre><code>my $conf = Config::Perl::V::myconfig ({ env =&gt; qr/^ORACLE/ });
+my $conf = Config::Perl::V::myconfig ([ env =&gt; qr/^ORACLE/ ]);</code></pre>
 
 </dd>
 <dt id="config">config</dt>
@@ -175,10 +175,10 @@
 
 <h1 id="TODO">TODO</h1>
 
-<pre><code> * Implement retrieval functions/methods
- * Documentation
- * Error checking
- * Tests</code></pre>
+<pre><code>* Implement retrieval functions/methods
+* Documentation
+* Error checking
+* Tests</code></pre>
 
 <h1 id="AUTHOR">AUTHOR</h1>
 
@@ -186,7 +186,7 @@
 
 <h1 id="COPYRIGHT-AND-LICENSE">COPYRIGHT AND LICENSE</h1>
 
-<p>Copyright (C) 2009-2021 H.Merijn Brand</p>
+<p>Copyright (C) 2009-2022 H.Merijn Brand</p>
 
 <p>This library is free software; you can redistribute it and/or modify it under the same terms as Perl itself.</p>
 
