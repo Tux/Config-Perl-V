@@ -1,8 +1,9 @@
-0.34	- 01 Jan 2022, H.Merijn Brand
+0.34	- 02 Aug 2022, H.Merijn Brand
     * It's 2021
     * Add generated static docs for github
     * It's 2022
     * Added 5.35.8
+    * Add PERL_USE_UNSHARED_KEYS_IN_LARGE_HASHES
 
 0.33	- 18 Dec 2020, H.Merijn Brand
     * Release for sync with core (no changes but the version number)
