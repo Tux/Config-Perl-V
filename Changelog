@@ -9,6 +9,7 @@
     * Add NO_HASH_SEED
     * Add PERL_HASH_NO_SBOX32
     * Add PERL_HASH_USE_SBOX32
+    * Added 5.36.0
 
 0.33	- 18 Dec 2020, H.Merijn Brand
     * Release for sync with core (no changes but the version number)
