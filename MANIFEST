@@ -32,4 +32,5 @@ t/38_plv5320tld.t
 t/39_plv5340tqm.t
 t/40_plv5358dnqm.t
 t/41_plv5360dnqm.t
+t/42_plv5373tld.t
 examples/show-v.pl
