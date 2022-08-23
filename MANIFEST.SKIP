@@ -13,6 +13,7 @@ inc-test-count
 sandbox/
 .releaserc
 \.aspell\.local\.pws
+\.tar$
 \.tar.gz$
 \.tgz$
 \.tmp$
