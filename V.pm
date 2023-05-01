@@ -27,6 +27,8 @@ $VERSION     = "0.37";
 my %BTD = map {( $_ => 0 )} qw(
 
     DEBUGGING
+    HAS_LONG_DOUBLE
+    HAS_STRTOLD
     NO_HASH_SEED
     NO_MATHOMS
     NO_PERL_INTERNAL_RAND_SEED
