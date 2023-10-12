@@ -57,8 +57,8 @@ sub postamble {
 	'	pod2html      < $? 2>&1 | grep -v "^Cannot find" > $@',
 	'doc/Config-Perl-V.3:		V.pm',
 	'	pod2man       < $? > $@',
-	'doc/Config-Perl-V.man:	doc/Config-Perl-V.3',
-	'	nroff -mandoc < $? > $@',
+	'doc/Config-Perl-V.man:		doc/Config-Perl-V.3',
+	'	nroff2man     < $? > $@',
 	'';
     } # postamble
 
