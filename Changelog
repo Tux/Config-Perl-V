@@ -1,3 +1,6 @@
+0.38	- 13 Jan 2025, H.Merijn Brand
+    * our instead of use vars (PR#4)
+
 0.37	- 13 Jan 2025, H.Merijn Brand
     * Update version requirements based on CVE's
     * Add HAS_LONG_DOUBLE and HAS_STRTOLD (5.37.11)
