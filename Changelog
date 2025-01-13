@@ -1,4 +1,5 @@
 0.38	- 13 Jan 2025, H.Merijn Brand
+    * doc should not be part of test
     * our instead of use vars (PR#4)
 
 0.37	- 13 Jan 2025, H.Merijn Brand
