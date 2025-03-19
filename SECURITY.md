@@ -3,7 +3,7 @@
 Report issues via email at: H.Merijn Brand <hmbrand@cpan.org>.
 
 
-This is the Security Policy for the Perl Config::Perl::V distribution.
+This is the Security Policy for Config::Perl::V.
 
 The latest version of the Security Policy can be found in the
 [git repository for Config::Perl::V](https://github.com/Tux/Config-Perl-V).
