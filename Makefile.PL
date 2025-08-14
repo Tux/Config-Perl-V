@@ -13,6 +13,7 @@ my %wm = (
     AUTHOR        =>   "H.Merijn Brand <h.m.brand\@xs4all.nl>",
     VERSION_FROM  =>   "V.pm",
     ABSTRACT_FROM =>   "V.pm",
+    INSTALLDIRS => ($] < 5.011 ? 'perl' : 'site'),
 
     PREREQ_PM	  => { "Config"	=> 0,				},
     macro         => { TARFLAGS => "--format=ustar -c -v -f",	},
